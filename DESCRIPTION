@@ -1,6 +1,6 @@
 Package: fontemoji
 Type: Package
-Title: Using 'OpenSansEmoji' Font in R Graphs
+Title: Using 'Emoji' Font in R Graphs
 Version: 0.1-0
 Date: 2015-12-03
 Author: Yixuan Qiu and authors of the included font. See file
