@@ -14,3 +14,4 @@ Imports:
     sysfonts
 License: Apache License (>= 2.0)
 Copyright: see file COPYRIGHTS
+VignetteBuilder: knitr
