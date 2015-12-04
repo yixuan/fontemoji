@@ -1,0 +1,12 @@
+The OpenSansEmoji font included in this package was created by Merten Peetz
+(https://github.com/MorbZ/OpenSansEmoji), which was further derived from the
+following three fonts:
+  Open Sans (developed by Steve matteson)
+  Android Emoji (developed by The Android Open Source Project)
+  Symbola (developed by George Douros)
+
+Open Sans and Android Emoji are under Apache License, Version 2.0.
+Symbola is free for any use (http://users.teilar.gr/~g1951d/).
+
+Other part of this package was written by Yixuan Qiu.
+
