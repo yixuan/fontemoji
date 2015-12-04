@@ -1,0 +1,68 @@
+## Easy Emoji!
+
+Plotting emojis in R can be as easy as plotting regular text. The idea is to use
+the [remoji](https://github.com/richfitz/remoji) package to obtain emoji strings,
+and to use the [showtext](https://github.com/yixuan/showtext) package
+to draw the symbols. The `fontemoji` package loads the
+[OpenSansEmoji](https://github.com/MorbZ/OpenSansEmoji) font
+(included in the package) and registers it to the `showtext` database with
+the family name "emoji", so that emojis can be plotted using any text drawing
+functions in R.
+
+## Base Graphics
+
+Below is a quick example:
+
+```r
+library(showtext)
+library(fontemoji)
+library(remoji)
+
+showtext.auto()
+
+set.seed(123)
+x11()
+plot(1, type = "n", xlim = c(0, 12), ylim = c(0, 12),
+     xlab = "Days left towards deadline", ylab = "Tasks to do")
+text(rnorm(20, 7, 2), rnorm(20, 4, 2), emoji("smile"), col = "red",
+     cex = 2, family = "emoji")
+text(rnorm(20, 4, 2), rnorm(20, 7, 2), emoji("cry"), col = "steelblue",
+     cex = 2, family = "emoji")
+```
+
+<div align="center">
+  <img src="http://i.imgur.com/IC9fTK0.png" alt="plotting emoji"/>
+</div>
+
+The names of emoji symbols can be found in the
+[Emoji cheat sheet](http://www.emoji-cheat-sheet.com/).
+
+## ggplot2 Graphics
+
+Want some `ggplot2`-flavored plots? The idea is the same:
+
+```r
+library(showtext)
+library(fontemoji)
+library(remoji)
+library(ggplot2)
+
+showtext.auto()
+
+dat = data.frame(x = emoji(c("+1", "-1")), y = c(1000, 100))
+x11()
+ggplot(dat, aes(x = x, y = y)) +
+    geom_bar(aes(fill = x), stat = "identity", width = 0.5) +
+    scale_fill_hue("", labels = sub_emoji(c("Good! :satisfied:",
+                                            "Oh no... :disappointed:"))) +
+    xlab("") + ylab("Votes") + ggtitle("How Do You Like This Package?") +
+    theme(axis.text.x = element_text(family = "emoji", size = 30),
+          legend.text = element_text(family = "emoji", size = 20),
+          legend.key.size = grid::unit(1, "cm"),
+          title = element_text(size = 20))
+```
+
+<div align="center">
+  <img src="http://i.imgur.com/2gU9jav.png" alt="plotting emoji"/>
+</div>
+
